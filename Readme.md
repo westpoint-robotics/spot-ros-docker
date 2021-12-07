@@ -29,7 +29,16 @@ example arg to mount a config volume:
  -v `pwd`/my.yaml:/spot/config/spot_ros.yaml
 ```
 
-# Bootstrapping persistence
+### Build
+If you want to build this container locally, rather than pulling from Docker Hub:
+
+```bash
+git clone https://github.com/westpointrobotics/spot_ros.git
+cd spot_ros
+docker build --tag spot_ros .
+```
+
+### Bootstrapping persistence
 
 If you want to extract files to use persistently, you could do something like this:
 
