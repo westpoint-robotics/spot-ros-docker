@@ -33,7 +33,7 @@ example arg to mount a config volume:
 If you want to build this container locally, rather than pulling from Docker Hub:
 
 ```bash
-git clone https://github.com/westpointrobotics/spot_ros.git
+git clone https://github.com/westpoint-robotics/spot-ros-docker.git
 cd spot_ros
 docker build --tag spot_ros .
 ```
