@@ -25,5 +25,4 @@ ENV USERNAME dummyusername
 ENV PASSWORD dummypassword
 ENV HOSTNAME 192.168.50.3
 
-EXPOSE 11310:11311
 CMD [ "bash", "spot_entrypoint.sh" ]

@@ -6,13 +6,13 @@ It simply listens for `cmd_vel` and drives the motors.
 Run it using parameters like so:
 
 ```bash
-docker run -d \
+docker run \
     -e username=username \
     -e password=password \
     -e hostname=hostip \
-    -p 11310:11311 \
+    --net host \
     --name spot_ros \
-    spot_ros:noetic
+    westpointrobotics/spot_ros:noetic
 ```
 
 To override default config, mount files into `/spot/config`.
@@ -29,10 +29,22 @@ example arg to mount a config volume:
  -v `pwd`/my.yaml:/spot/config/spot_ros.yaml
 ```
 
-For simple networking with the host,
-bind a host port to the container's ros port like `-p 11310:11311`.
-Then you can set on the host something like:
+# Bootstrapping persistence
+
+If you want to extract files to use persistently, you could do something like this:
+
 ```bash
-export ROS_MASTER_URL=localhost:11310
-export ROS_HOSTNAME=172.17.0.1
+mkdir ~/spot-work
+cd ~/spot-work
+docker run --rm -it -v `pwd`:/work --entrypoint bash westpointrobotics/spot_ros:noetic
+# either 
+$ cp /spot/config/* /work
+# or for the original clearpath configs
+$ cp /spot/src/spot_ros/config/* /work
+$ exit
+
+# edit files in current directory as desired
+# then mount your current directory into container over /spot/config
+docker run -e hostname=... -v `pwd`:/spot/config --name spottest westpointrobotics/spot_ros:noetic
+
 ```
