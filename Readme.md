@@ -3,16 +3,24 @@
 This container runs ClearPathRobotics' spot_ros driver.
 It simply listens for `cmd_vel` and drives the motors.
 
-Run it using parameters like so:
+Run it using parameters like so (shown with default values, so you can omit if they match):
 
 ```bash
 docker run \
     -e username=username \
     -e password=password \
-    -e hostname=hostip \
+    -e hostname=192.168.50.3 \
+    -e vel_topic=/cmd_vel \
+    -e enable_mux=false \
+    -e launch_file=driver.launch
     --net host \
     --name spot_ros \
     westpointrobotics/spot_ros:noetic
+
+## or with command line
+docker run --name spot_ros --net host \
+    roslaunch /spot/config/driver.launch username:=user password:=pass #etc.
+
 ```
 
 To override default config, mount files into `/spot/config`.

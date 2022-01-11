@@ -11,18 +11,15 @@ RUN apt-get update && \
         ros-noetic-tf2-msgs \
         ros-noetic-tf2-ros \
     && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* 
 
 RUN pip install --no-cache-dir cython bosdyn-client bosdyn-mission bosdyn-api bosdyn-core empy
 
 RUN mkdir src && \
     catkin config --init --extend /opt/ros/noetic --install --merge-install --blacklist spot_viz --cmake-args -DCMAKE_BUILD_TYPE=Release  && \
     cd src && \
-    git clone https://github.com/clearpathrobotics/spot_ros.git && \
+    git clone https://github.com/clearpathrobotics/spot_ros.git --depth 1 && \
     catkin build --continue-on-failure
 
-ENV USERNAME dummyusername
-ENV PASSWORD dummypassword
-ENV HOSTNAME 192.168.50.3
+ENTRYPOINT [ "bash", "/spot/spot_entrypoint.sh" ]
 
-CMD [ "bash", "spot_entrypoint.sh" ]
