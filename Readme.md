@@ -1,7 +1,6 @@
 # spot_ros docker
 
-This container runs ClearPathRobotics' spot_ros driver.
-It simply listens for `cmd_vel` and drives the motors.
+This container runs [ClearPathRobotics' spot_ros driver](https://github.com/clearpathrobotics/spot_ros).
 
 Run it using parameters like so (shown with default values, so you can omit if they match):
 

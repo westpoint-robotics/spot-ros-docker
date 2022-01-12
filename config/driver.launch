@@ -4,7 +4,7 @@
   <arg name="password" default="dummypassword" />
   <arg name="hostname" default="192.168.50.3" />
   <arg name="estop_timeout" default="9.0" />
-  <arg name="vel_topic" default="cmd_vel" />
+  <arg name="vel_topic" default="/cmd_vel" />
   <arg name="enable_mux" default="false" />
 
   <node pkg="spot_driver" type="spot_ros" name="spot_ros"  ns="spot" output="screen">
@@ -13,7 +13,7 @@
     <param name="password" value="$(arg password)" />
     <param name="hostname" value="$(arg hostname)" />
     <param name="estop_timeout" value="$(arg estop_timeout)" />
-    <remap from="spot/cmd_vel" to="$(arg vel_topic)" />
+    <remap from="/spot/cmd_vel" to="$(arg vel_topic)" />
     <remap from="joint_states" to="/joint_states" />
     <remap from="tf" to="/tf" />
   </node>
