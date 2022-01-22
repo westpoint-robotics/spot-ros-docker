@@ -16,8 +16,10 @@
     <remap from="/spot/cmd_vel" to="$(arg vel_topic)" />
     <remap from="joint_states" to="/joint_states" />
     <remap from="tf" to="/tf" />
+    <remap from="status/battery_percent" to="/robot/battery_percent" />
+    <remap from="status/battery_seconds" to="/robot/battery_seconds" />
   </node>
-  
+
   <node pkg="twist_mux" type="twist_mux" name="twist_mux" if="$(arg enable_mux)">
     <rosparam command="load" file="$(find spot_driver)/config/twist_mux.yaml" />
     <remap from="cmd_vel_out" to="spot/cmd_vel"/>
