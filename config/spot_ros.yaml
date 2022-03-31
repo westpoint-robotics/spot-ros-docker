@@ -7,5 +7,7 @@ rates:
   rear_image: 10.0
 auto_claim: True
 auto_power_on: True
-auto_stand: True 
+auto_stand: True
 
+mode_parent_odom_tf: odom # odom or vision
+publish_tf: false
