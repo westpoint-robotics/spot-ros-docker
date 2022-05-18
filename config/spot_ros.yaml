@@ -10,5 +10,5 @@ auto_power_on: True
 auto_stand: True
 
 mode_parent_odom_tf: odom # odom or vision
-publish_odom: false
+publish_odom_tf: false
 use_enu_frame: true
