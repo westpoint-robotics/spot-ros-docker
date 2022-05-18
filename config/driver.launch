@@ -7,7 +7,7 @@
   <arg name="vel_topic" default="/cmd_vel" />
   <arg name="enable_mux" default="false" />
 
-  <node pkg="spot_driver" type="spot_ros" name="spot_ros"  ns="spot" output="screen">
+  <node pkg="spot_driver" type="spot_ros" name="spot_ros" ns="spot" output="screen">
     <rosparam file="/spot/config/spot_ros.yaml" command="load" />
     <param name="username" value="$(arg username)" />
     <param name="password" value="$(arg password)" />
@@ -19,6 +19,8 @@
     <remap from="status/battery_percent" to="/robot/battery_percent" />
     <remap from="status/battery_seconds" to="/robot/battery_seconds" />
   </node>
+
+  <!-- <node pkg="spot_driver" type="spot_ros_images.py" name="spot_ros_images" /> -->
 
   <node pkg="twist_mux" type="twist_mux" name="twist_mux" if="$(arg enable_mux)">
     <rosparam command="load" file="$(find spot_driver)/config/twist_mux.yaml" />

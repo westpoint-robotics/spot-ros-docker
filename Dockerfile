@@ -19,6 +19,7 @@ RUN mkdir -p src && \
     catkin config --init --extend /opt/ros/noetic --install --merge-install --blacklist spot_viz --cmake-args -DCMAKE_BUILD_TYPE=Release  && \
     cd src && \
     git clone https://github.com/westpoint-robotics/spot_ros.git --depth 1 && \
-    catkin build --continue-on-failure
+    catkin build --continue-on-failure && \
+    catkin clean -bdL -y
 
 ENTRYPOINT [ "bash", "/spot/spot_entrypoint.sh" ]
