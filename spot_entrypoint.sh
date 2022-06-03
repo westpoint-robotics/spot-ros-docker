@@ -3,6 +3,9 @@ set -e
 
 source /spot/install/setup.bash
 
+# temp switch until bosdyn-api gets rebuilt
+export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+
 args=""
 for e in username password hostname estop_timeout vel_topic enable_mux; do
   if [ -n "${!e}" ]; then args="$args ${e}:=${!e}"; fi
